@@ -1,3 +1,4 @@
+
 import requests
 import random
 import time
@@ -49,7 +50,7 @@ def send_request(url, method, proxies, attack_number, error_messages):
         return response.status_code == 200
     except Exception as e:
         error_messages.append(f"Request failed for attack_number {attack_number}: {e}")
-        raise
+        return False  # Return False instead of raising an exception
 
 def flood(url, count, interval, method, proxy_list):
     logging.info(f"Starting to send {method} requests to {url}...")
